@@ -1,21 +1,23 @@
 terraform {
+  backend "remote" {
+    organization = "weddig_enterprises"
+  workspaces {
+      name = "terraform_train"
+    }
+  }
+}
+
+terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 2.70"
     }
   }
-  backend "remote" {
-    organization = "weddig_enterprises"
-
-    workspaces {
-      name = "terraform_train"
-    }
-  }
 }
 
 provider "aws" {
-  profile = "dwmfa"
+  #profile = "dwmfa"
   region = var.region
 }
 
